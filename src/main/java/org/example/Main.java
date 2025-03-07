@@ -1,39 +1,38 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        String name;
-        int age;
+
+        List<User> users = GetUsersFromConsole(5);
+
+        for(User u: users){
+            System.out.println(u.toString());
+        }
+    }
+
+    public static List<User> GetUsersFromConsole(int number){
 
         Scanner scanner = new Scanner(System.in);
+        List<User> users = new ArrayList<>();
 
-        System.out.println("Введите имя первого пользователя");
-        name = scanner.nextLine();
+        for(int i = 0; i < number; i++){
+            String name;
+            int age;
 
-        System.out.println("Введите возраст первого пользователя");
-        age = scanner.nextInt();
-        scanner.nextLine();
+            System.out.println("Введите имя пользователя " + (i + 1));
+            name = scanner.nextLine();
 
-        User firstUser = new User(name,age);
+            System.out.println("Введите возраст пользователя" + (i + 1));
+            age = scanner.nextInt();
+            scanner.nextLine();
 
-        System.out.println(firstUser.toString());
-
-        System.out.println("Введите имя второго пользователя");
-        name = scanner.nextLine();
-
-        System.out.println("Введите возраст второго пользователя");
-        age = scanner.nextInt();
-
-        User scndUser = new User(name,age);
-
-        scanner.close();
-
-        if(firstUser.getAge() < scndUser.getAge()){
-            System.out.println(firstUser.toString());
-        } else {
-            System.out.println(scndUser.toString());
+           users.add(new User(name,age));
         }
+
+        return users;
     }
 }
