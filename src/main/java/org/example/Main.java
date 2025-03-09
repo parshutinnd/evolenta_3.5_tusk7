@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -32,6 +33,8 @@ public class Main {
 
            users.add(new User(name,age));
         }
+
+        Collections.sort(users);
 
         return users;
     }

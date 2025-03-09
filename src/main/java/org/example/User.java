@@ -1,6 +1,6 @@
 package org.example;
 
-public class User {
+public class User implements Comparable<User>{
     private String Name;
     private int Age;
 
@@ -28,5 +28,15 @@ public class User {
     @Override
     public String toString() {
         return Name + ", возраст " + Age + " лет";
+    }
+
+    @Override
+    public int compareTo(User o) {
+        if (this.Age > o.Age) {
+            return 1;
+        } else if (this.Age < o.Age) {
+            return -1;
+        }
+        return 0;
     }
 }
